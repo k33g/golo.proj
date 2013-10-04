@@ -6,7 +6,7 @@ Golo.proj is a **Golo** template project
 
 ##Install It
 
-###First way
+###First way (simplest way)
 
 	git clone --q --depth 0 git@github.com:k33g/golo.proj.git <your project directory>
 
@@ -15,6 +15,11 @@ Golo.proj is a **Golo** template project
 	mkdir <your project directory>
 	cd <your project directory>
 	golio golo.proj
+
+Then :
+
+	chmod a+x gol
+	chmod a+x golj
 
 >>*You need golio : [https://github.com/k33g/golio](https://github.com/k33g/golio)*
 
