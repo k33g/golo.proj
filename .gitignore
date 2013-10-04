@@ -1,0 +1,5 @@
+target/*
+*.jar
+java.src/hello/*
+libs/*.golo
+main.tests.golo
