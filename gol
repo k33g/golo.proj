@@ -10,31 +10,31 @@
 JARS_HOME="jars"
 LIBS_HOME="libs"
 
-echo "1- loading jars"
+
+#echo "1- loading jars"
 #FIND JARS
-JARS=""
-FILES="$(find $JARS_HOME -name '*.jar')"
-for jar in $FILES
-do
-	JARS="$JARS$PWD/$jar:"
-	echo "--> $jar"
-done
-
-export CLASSPATH_PREFIX=${CLASSPATH_PREFIX}:"$JARS"
-
-
-echo "2- loading Golo Libraries"
+if [ -d "$JARS_HOME" ]; then
+  JARS=""
+  FILES="$(find $JARS_HOME -name '*.jar')" 
+  for jar in $FILES
+  do
+    JARS="$JARS$PWD/$jar "
+    #echo "--> $jar"
+  done
+  #export CLASSPATH_PREFIX=${CLASSPATH_PREFIX}:"$JARS"
+fi
+#echo "2- loading Golo Libraries"
 #FIND GOLO LIBRARIES
 LIBS=""
-FILES="$(find $LIBS_HOME -name '*.golo')"
-for gf in $FILES
-do
-	LIBS="$LIBS $gf"
-	echo "--> $gf"
-done
+if [ -d "$LIBS_HOME" ]; then
+  FILES="$(find $LIBS_HOME -name '*.golo')"
+  for gf in $FILES
+  do
+    LIBS="$LIBS $gf"
+    #echo "--> $gf"
+  done
+fi
+#echo "3- running $1"
 
-echo "3- running $1"
-echo 
-
-$GOLO_HOME/bin/golo golo --files $LIBS $1
+$GOLO_HOME/bin/golo golo --classpath $JARS --files $LIBS $1
 
